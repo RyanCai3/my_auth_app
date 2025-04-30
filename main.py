@@ -1,11 +1,16 @@
 # The login page, called when the user chose "login"
 def login_page():
-    username = input("Enter username: ")
-    password = input("Enter password: ")
-    with open("source.csv") as source:
-        for line in source:
-            s_username, s_password = line.rstrip().split(",")
-    main_menu()
+    while True:
+        username = input("Enter username: ")
+        password = input("Enter password: ")
+        with open("source.csv") as source:
+            for line in source:
+                s_username, s_password = line.rstrip().split(",")
+                if username == s_username and password == s_password:
+                    print("Login Successful!")
+                    main_menu()
+                    break
+        print("Invalid username or password.")
 
 # The main menu, called when the user logs in
 def main_menu():
